@@ -5,7 +5,7 @@ import os
 import cv2 as cv
 import numpy as np
 
-image_dir = 'Formula_IT_2023_Images' # папка с исходными изображениями
+image_dir = 'Resources/Formula_IT_2023_Images' # папка с исходными изображениями
 
 for filename in os.listdir(image_dir):
     if filename.endswith('.tif'):
@@ -17,7 +17,7 @@ for filename in os.listdir(image_dir):
             cv.imwrite(f'Formula_IT_2023_Images_after\\{filename}', img_norm) # сохранили изображения после экспозиции в новую папку
             
             
-image_dir = 'Formula_IT_2023_Images_after' # папка с изображениями с повышенной экспозицией
+image_dir = 'Resources/Formula_IT_2023_Images_after' # папка с изображениями с повышенной экспозицией
 
 piece_whole_count = 0 # счетчик количества кусочков на всех картинках
 cluster_whole_count = 0 # счетчик количества контуров на всех картинках
@@ -70,7 +70,7 @@ for filename in os.listdir(image_dir):
         img_normalized = img_normalized[w // 2: w // 2 + 20, h // 2:h // 2 + 20] # вырезали кусочек изображения из центра (20*20 пикселей)
         img_normalized_big = cv.resize(img_normalized, (200, 200)) # увеличили размер изображения (было 20*20 стало 200*200)
         #сохранение изображения в папку
-        cv.imwrite(f'part_of_imgs\\{h // 2}_{h // 2 + 20}_{w // 2}_{w // 2 + 20}_{filename}', img_normalized) 
+        cv.imwrite(f'Resources/part_of_imgs\\{h // 2}_{h // 2 + 20}_{w // 2}_{w // 2 + 20}_{filename}.png', img_normalized) 
 #         cv.imshow('result', img_normalized_big) # вывод этого кусочка на экран
 #         cv.waitKey(0) # метод с аргументом 0, показывающий, что изображение будет открыто всегда, пока пользователь его не закроет
         print(f"picture: {filename}")
